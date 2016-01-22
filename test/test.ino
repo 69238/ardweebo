@@ -1,5 +1,5 @@
-const int buttonPin = 2;     // the number of the pushbutton pin
-const int buttonPin2 = 3;
+const int cycleButton = 2;     // the number of the pushbutton pin
+const int switchButton = 3;
 const int ledPin1 = 11;
 const int ledPin2 = 10;
 const int ledPin3 = 9;
@@ -9,23 +9,16 @@ const int ledPinO = 5;   // the pin that the LED is attached to
 int ledPins[] = {5, 6, 9, 10, 11};
 
 // Variables will change:
-int aantalKliks = 0;   // counter for the number of button presses
-int buttonState = 0;         // current state of the button
-int lastButtonState = 0;     // previous state of the button
+int aantalKliks = 0; // counter for the number of button presses
+int cycleState = 0; // current state of the button
+int cycleLast = 0; // previous state of the button
 
 void setup() {
-  /*pinMode(buttonPin, INPUT);
-  pinMode(ledPin1, OUTPUT);
-  pinMode(ledPin2, OUTPUT);
-  pinMode(ledPin3, OUTPUT);
-  pinMode(ledPin4, OUTPUT);
-  pinMode(ledPinO, OUTPUT);*/
   for( int i=0; i<5; i++){
     pinMode(ledPins[i], OUTPUT);
   }
   Serial.begin(9600);
 }
-
 
 void loop() {
   //read the pushbutton input pin:
@@ -71,16 +64,16 @@ void loop() {
     digitalWrite(ledPin4, 0);
     digitalWrite(ledPinO, 0);
   }*/
-  buttonState = digitalRead(buttonPin);
+  cycleState = digitalRead(cycleButton);
 
-  if (buttonState != lastButtonState) {
-    if (buttonState == HIGH) {
+  if (cycleState != cycleLast) {
+    if (cycleState == HIGH) {
         aantalKliks++;
     }
     delay(50);
   }
 
-  lastButtonState = buttonState;
+  cycleLast = cycleState;
 
   if (aantalKliks % 1 == 0){
     for(int i=0; i<1; i++)
