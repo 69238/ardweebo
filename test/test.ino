@@ -1,10 +1,10 @@
 const int buttonPin = 2;     // the number of the pushbutton pin
 const int buttonPin2 = 3;
-int ledPin1 = 11;
-int ledPin2 = 10;
-int ledPin3 = 9;
-int ledPin4 = 6;
-int ledPinO = 5;   // the pin that the LED is attached to
+const int ledPin1 = 11;
+const int ledPin2 = 10;
+const int ledPin3 = 9;
+const int ledPin4 = 6;
+const int ledPinO = 5;   // the pin that the LED is attached to
 
 int ledPins[] = {5, 6, 9, 10, 11};
 
@@ -72,14 +72,14 @@ void loop() {
     digitalWrite(ledPinO, 0);
   }*/
   buttonState = digitalRead(buttonPin);
-  
+
   if (buttonState != lastButtonState) {
     if (buttonState == HIGH) {
         aantalKliks++;
     }
     delay(50);
   }
-  
+
   lastButtonState = buttonState;
 
   if (aantalKliks % 1 == 0){
@@ -88,5 +88,5 @@ void loop() {
        digitalWrite(ledPins[i], HIGH);
     }
   }
-  
+
 }
